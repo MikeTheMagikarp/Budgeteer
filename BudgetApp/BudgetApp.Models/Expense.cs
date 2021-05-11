@@ -32,17 +32,18 @@ namespace BudgetApp.Models
             set => SetField(ref _account, value);
         }
 
+        public int DayOfPayment
+        {
+            get => _dayOfPayment;
+            set => SetField(ref _dayOfPayment, value);
+        }
+
         public AccountType Type
         {
             get => _type;
             set => SetField(ref _type, value);
         }
 
-        public DateTime PaymentDate
-        {
-            get => _paymentDate;
-            set => SetField(ref _paymentDate, value);
-        }
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -64,9 +65,10 @@ namespace BudgetApp.Models
 
         private Account _account;
 
+        private int _dayOfPayment;
+
         private AccountType _type;
 
-        private DateTime _paymentDate;
         #endregion
     }
 }

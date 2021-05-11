@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace BudgetApp.Models
 {
+    [Serializable]
     public class Account
     {
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

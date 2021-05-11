@@ -1,0 +1,15 @@
+﻿<Window x:Class="BudgetApp.AddAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetApp"
+        mc:Ignorable="d"
+        Title="AddAccountWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Account Name" HorizontalAlignment="Center" Margin="0,75,125,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AccountNameTextBox" HorizontalAlignment="Center" Height="23" Margin="125,76,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddAccountButton" Content="Add Account" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="76" Click="AddAccountButton_Click"/>
+
+    </Grid>
+</Window>

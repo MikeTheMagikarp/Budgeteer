@@ -11,43 +11,73 @@ namespace BudgetApp.Controllers
 {
     public class MainWindowController
     {
-        public ObservableCollection<Expense> Expenses { get; set; } = new ObservableCollection<Expense>()
+        public BudgetInformation Information { get; set; } = new BudgetInformation();
+
+        public void Load()
         {
-            new Expense()
+            if (Information.Expenses.Count != 0 || Information.Accounts.Count != 0)
             {
-                Name = "Name",
-                Account = new Account(){Name = "AccountName"},
-                PaymentDate = DateTime.Now,
-                Type = AccountType.Persistent,
-                Value = 1234,
+                // Ask for confirmation to overwrite
+
+                // Just clearing for now to be able to load
+                Information.Accounts.Clear();
+                Information.Expenses.Clear();
             }
-        };
+
+            var expensesFilename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Filenames.InformationFile);
+
+            if (File.Exists(expensesFilename))
+            {
+                // Load from expected location
+                try
+                {
+                    XmlSerializer serializer = new XmlSerializer(Information.GetType());
+                    using (var stream = File.OpenRead(expensesFilename))
+                    {
+                        var information = serializer.Deserialize(stream) as BudgetInformation;
+
+                        Information = information;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Log exception here
+                }
+            }
+            else
+            {
+                // Ask for file location
+            }
+        }
 
         public void Save()
         {
-            if (Expenses.Count() == 0)
+            if (!Information.IsEmpty())
             {
-                return;
-            }
+                var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Filenames.InformationFile);
 
-            var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "budgetApp.xml");
-
-            try
-            {
-                XmlDocument xmlDocument = new XmlDocument();
-                XmlSerializer serializer = new XmlSerializer(Expenses.GetType());
-                using (MemoryStream stream = new MemoryStream())
+                try
                 {
-                    serializer.Serialize(stream, Expenses);
-                    stream.Position = 0;
-                    xmlDocument.Load(stream);
-                    xmlDocument.Save(filename);
+                    XmlDocument xmlDocument = new XmlDocument();
+                    XmlSerializer serializer = new XmlSerializer(Information.GetType());
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        serializer.Serialize(stream, Information);
+                        stream.Position = 0;
+                        xmlDocument.Load(stream);
+                        xmlDocument.Save(filename);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Log exception here
                 }
             }
-            catch (Exception ex)
-            {
-                //Log exception here
-            }
+        }
+
+        public void AddAccount()
+        {
+            
         }
     }
 }
