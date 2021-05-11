@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="BudgetApp.LabelTextBoxUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BudgetApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" MinHeight="30" MaxHeight="30" Width="414.5">
+    <Grid>
+        <Label Content="{Binding LocalLabel}" Height="30" HorizontalAlignment="Left" Name="BaseLabel" VerticalAlignment="Top" Width="146" />
+        <TextBox Text="{Binding LocalTextBox}" Height="30" Margin="151,0,0,0" Name="BaseTextBox" VerticalAlignment="Top" />
+    </Grid>
+</UserControl>

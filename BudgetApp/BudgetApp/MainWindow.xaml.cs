@@ -1,6 +1,7 @@
 ﻿using BudgetApp.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,18 +32,28 @@ namespace BudgetApp.View
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
+            Controller.Load();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Controller.Save();
+        }
+
+        private void AddAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddAccountWindow p = new AddAccountWindow(Controller);
+
+            p.Show();
+        }
+
+        private void AddExpenseButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddExpenseWindow p = new AddExpenseWindow(Controller);
+
+            p.Show();
         }
     }
 }

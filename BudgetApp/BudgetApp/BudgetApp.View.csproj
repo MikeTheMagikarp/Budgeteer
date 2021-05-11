@@ -55,13 +55,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddExpenseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LabelTextBoxUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddAccountWindow.xaml.cs">
+      <DependentUpon>AddAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddExpenseWindow.xaml.cs">
+      <DependentUpon>AddExpenseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LabelTextBoxUserControl.xaml.cs">
+      <DependentUpon>LabelTextBoxUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -98,6 +119,10 @@
     <ProjectReference Include="..\BudgetApp.Controllers\BudgetApp.Controllers.csproj">
       <Project>{8c02f2d0-89d7-4f64-9a1d-17981dea9d22}</Project>
       <Name>BudgetApp.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BudgetApp.Models\BudgetApp.Models.csproj">
+      <Project>{3922455D-BA22-4E34-A633-9CD9FAF54273}</Project>
+      <Name>BudgetApp.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
