@@ -32,6 +32,14 @@ namespace BudgetApp.View
 
         }
 
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             Controller.Load();
